@@ -41,6 +41,34 @@ int test2 = (2147483647 + 1) // overflow
 int dataWithCommas = 2_147_483_647 // this is a way of using commas in java 
 ```
 
+
+byte for storing small numbers in range of -128 to 128.
+```java
+byte test = 128
+```
+
+short 
+```java
+short test =  -32768
+```
+
+## width of data types
+each data type has its own size or width that is expressed in bits
+byte - 8 bits
+short - 16 bits
+int - 32 bits
+long - 
+
+## numeric literal character suffix
+java allows certain numeric literals to have a suffix appended to the value, to force it to be a different data type from the default value
+```java
+long test = 100 // 100 is an int, but long is a type that allows its suffix 'L' to be appended to the literal
+long betterTest = 100L; // this way we add a suffix making it more explicit about our purpose
+
+// when we try to assing larger numeric literal than int we HAVE to use L suffix, otherwise we will get an error
+long largeLiteral = 9999999999999999999999999L;
+```
+
 ## Wrapper classes for primitives
 Java uses concept called wrapper classes for all its primitive types.
 some of primitives and their wrapper classes
