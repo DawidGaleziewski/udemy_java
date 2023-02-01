@@ -19,5 +19,14 @@ public class ControlFlowClass {
             System.out.println("I will not print out"); // this is one statment starting from if
             System.out.println("I will print out"); //
 
+
+        // trivia: this will work and run
+        boolean isCar = false;
+        if(isCar = true) { // the statment will first assing true to variable isCar and return it evaluating whole thing to true. This is why its better to use abbr if we use bolan variables in if statments
+            System.out.println("this will print");
+        }
+
+        // We can also use ternary operators in java
+        String myNameIs = true ? "Slim Shady" : "Please stand up";
     }
 }
