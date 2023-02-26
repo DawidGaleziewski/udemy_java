@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        // # Class setters and getters
         // we can think about class as a more powerful user defined data type
         System.out.println("Hello world!");
 //        DogClass dog = new DogClass();
@@ -11,7 +12,24 @@ public class Main {
         dog.setAge(20);
         System.out.println("dogs age is " + dog.getAge());
 
+        // # class constructors
         // thanks to constructor we can pass the fields values when we initialise the object
         CartConstructorClass cart = new CartConstructorClass("cloths", 1000, 15, "Mark");
+
+        // # static variables
+        StaticAndInstanceVariablesClass example = new StaticAndInstanceVariablesClass();
+        System.out.println("number of static variable instances: " +  StaticAndInstanceVariablesClass.numberOfInstances);
+        StaticAndInstanceVariablesClass example2 = new StaticAndInstanceVariablesClass();
+        System.out.println("number of static variable instances: " +  StaticAndInstanceVariablesClass.numberOfInstances); // best practise is to access the static member variables from class, despite the fact we could use the instance
+
+        // static variables require us to be extra careful. This is how things can go wrong
+        StaticAndInstanceVariablesClass jake = new StaticAndInstanceVariablesClass("Jake");
+        StaticAndInstanceVariablesClass mike = new StaticAndInstanceVariablesClass("Mike"); // as those variables share same static variable, this will override mike as well
+
+        System.out.println("name of jake variable " + jake.name);
+        System.out.println("name of mike variable " + mike.name);
+
+        // # static methods
+        StaticAndInstanceMethodsClass.getMyNumber(5412); // way to use static method
     }
 }
