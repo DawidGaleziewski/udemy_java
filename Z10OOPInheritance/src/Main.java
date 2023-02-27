@@ -31,5 +31,12 @@ public class Main {
 
         // # static methods
         StaticAndInstanceMethodsClass.getMyNumber(5412); // way to use static method
+
+        // # POJOS
+        for (int i = 1; i <= 5; i++){
+            POJOClass student = new POJOClass("S921301" + i, "Mark", "27/20/2000", "class");
+            System.out.println(student); // notice we do not have to use toString method. This is due to our overridden toString method with its specific signature, some java methods will know to use it under the hood.
+        }
+
     }
 }
