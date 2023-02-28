@@ -38,5 +38,9 @@ public class Main {
             System.out.println(student); // notice we do not have to use toString method. This is due to our overridden toString method with its specific signature, some java methods will know to use it under the hood.
         }
 
+        // # Records
+        RecordExample re = new RecordExample("Mike", 21);
+        re.age(); // we can access the properties via accessor method
+        re.toString(); // it has also build in to string method
     }
 }
