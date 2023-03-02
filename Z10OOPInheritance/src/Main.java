@@ -50,8 +50,8 @@ public class Main {
         Cat mittens = new Cat();
         doAnimalStuff(mittens, "20km/h"); // we can pass cat type to a interface accepting animal as it inherits from it
 
-
-
+        Fish goldie = new Fish("ioa", "small", 4, 4, 2);
+        doAnimalStuff(goldie, "5km/h");
     }
 
     public static void doAnimalStuff(Animal animal, String speed){

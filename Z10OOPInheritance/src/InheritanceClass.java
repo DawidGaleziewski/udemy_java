@@ -83,4 +83,17 @@ class Fish extends Animal {
         this.fins = fins;
         this.gills = gills;
     }
+
+    @Override
+    public void makeNoise() {
+        super.makeNoise();
+    }
+
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "fins=" + fins +
+                ", gills=" + gills +
+                "} " + super.toString();
+    }
 }
