@@ -42,7 +42,6 @@ public class Main {
         RecordExample re = new RecordExample("Mike", 21);
         re.age(); // we can access the properties via accessor method
         re.toString(); // it has also build in to string method
-
         // # inheritance
         Animal blob = new Animal("Generic", "small", 40);
         doAnimalStuff(blob, "1km/h");
