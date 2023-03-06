@@ -9,5 +9,8 @@ public class FormatSpecifiers {
 
         // we can return output of formating as a string
         String formattedMsg = String.format("Your age is %d", 12);
+
+        int age = 20;
+        String formattedFloat = String.format("Age is  %.2f%n", (float) age); // we convert age fron int to float. format specifier %f allows us to specify the precision with .2 modifier
     }
 }
