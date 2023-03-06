@@ -17,5 +17,8 @@ public class StringOftenUsed {
         System.out.printf("text contains string (%s)%n", text.contains("time"));
         System.out.printf("text starts with string (%s)%n", text.startsWith("time"));
         System.out.printf("text ends with string (%s)%n", text.endsWith("time"));
+
+        // replace
+        System.out.printf("Replace spaces %s%n", text.replace(" ", "#"));
     }
 }
