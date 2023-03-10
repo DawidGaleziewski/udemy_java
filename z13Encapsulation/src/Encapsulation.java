@@ -7,7 +7,7 @@ public class Encapsulation {
     public static void main(String[] args) {
         // example of  ot encapsulated class
         Player john = new Player();
-        john.name = "John";
+        john.name = "John"; // another problem is that if we hange names of those fields we will have to go and change them everywhere in the implementation
         john.health = 100;
         john.loseHealth(50);
         john.health = 2000; // this will get around our setters and getters where we control i.e max health player can have
