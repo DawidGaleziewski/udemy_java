@@ -1,5 +1,6 @@
 public class Main {
     // poly - multiple, morph - shapes.
+    // Polymophism lets us write code call a method, but at runtime this mehod behaviour can be different for different objects
     public static void main(String[] args) {
 
         // same method "move, has different implementations.
@@ -15,6 +16,10 @@ public class Main {
         // !important. Notice this will be decided on RUNTIME! This is a great example of polymophism in active
         Vehicle yellow = new Submarine("yellow", 40);// notice!, despite this beeing class Vehicle, when we initize this object it is of type SUBMARINE. This is due the fact that JAVA JIT decides what type this object is in RUNTIME!
         yellow.move("pacific");
+
+        // we can create object using "factory method"
+        Vehicle wildhog = Vehicle.getVehicle("car", "hogger", 300);
+        wildhog.move("forest");
     }
 
 }
@@ -32,6 +37,15 @@ class Vehicle {
         String instanceType = this.getClass().getSimpleName(); // This will decide on what type it is during runtime.
         System.out.printf("Moving vehicle %s of type %s, to %s with speed %d%n",this.name, instanceType, destination, this.speed);
     }
+
+    // a factory method. Used when we do not care what class instance is the object. We do not care in this case, we want internals of the method to decide this for us.
+    public static Vehicle getVehicle(String type, String name, int speed){
+        return switch (type.toUpperCase().charAt(0)){
+            case 'C' -> new Car(name, speed);
+            case 'S' -> new Submarine(name, speed);
+            default -> new Vehicle(name, speed);
+        };
+    };
 }
 
 class Car extends Vehicle {
@@ -43,6 +57,7 @@ class Car extends Vehicle {
 class Plane extends Vehicle {
     public Plane(String name, int speed){
         super(name, speed);
+        System.out.println("ffffffff.....");
     }
 }
 
