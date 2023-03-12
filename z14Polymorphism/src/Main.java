@@ -18,7 +18,8 @@ public class Main {
         yellow.move("pacific");
 
         // we can create object using "factory method"
-        Vehicle wildhog = Vehicle.getVehicle("car", "hogger", 300);
+        // beauty of this solution is that we can awlays add new subclasses to the factory and this can be used as it would be. We can add and support new types easily.
+        Vehicle wildhog = Vehicle.getVehicle("c", "hogger", 300);
         wildhog.move("forest");
     }
 
