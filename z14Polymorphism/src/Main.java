@@ -21,6 +21,24 @@ public class Main {
         // beauty of this solution is that we can awlays add new subclasses to the factory and this can be used as it would be. We can add and support new types easily.
         Vehicle wildhog = Vehicle.getVehicle("c", "hogger", 300);
         wildhog.move("forest");
+
+        // ## var usage - runtime vs compile time types
+        // Interesting thing to notice is that when using factory it will throw a error when we use a more specific type
+        // Compiler will not know what type will be returned. This is a job for the runtime.
+        // we can fix this using casting, telling the compiler what will be the type returned (Car);
+        Car mysteryMachine = (Car) Vehicle.getVehicle("c", "mm", 10); // we should be careful with this. If we are casting just like in typescript. We are telling compiler we are smarter and we know better.
+        // If we lie to comp;oer we will get a runtime exception.
+
+        // vars i  java are special contextual keywords, that allow us to take advantage of "Local Variable Type Inference" LVTI
+        // in short we are telling java to figure out the compile-time type for us
+        var redOctober = Vehicle.getVehicle("S", "red october", 30); // var was introduced in java 8
+
+        // ## testing runtime types
+        Object unknownVehicle = Vehicle.getVehicle("S", "red october", 30);
+        if(unknownVehicle.getClass().getSimpleName() == "Submarine"){ // we can check the type
+            Submarine submarineVehicle = (Submarine) unknownVehicle; // after this we can assert it...
+            submarineVehicle.fireTorpedo("base"); // ...and use its specific methods
+        }
     }
 
 }
@@ -65,6 +83,10 @@ class Plane extends Vehicle {
 class Submarine extends  Vehicle {
     public Submarine(String name, int speed){
         super(name, speed);
+    }
+
+    public void fireTorpedo(String target){
+        System.out.println("Firing torpedo at " + target);
     }
 
     @Override
