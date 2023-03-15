@@ -32,12 +32,18 @@ public class Main {
         // vars i  java are special contextual keywords, that allow us to take advantage of "Local Variable Type Inference" LVTI
         // in short we are telling java to figure out the compile-time type for us
         var redOctober = Vehicle.getVehicle("S", "red october", 30); // var was introduced in java 8
+        redOctober.move("new land"); // thanks to polymorphism we can use diffrent methods (they are named the same, and when we start them they have the same signature, but in fact a diffrent methid will be run, closer to our class) withou casting
+        // in order to run a method, that would not use polymorphism, we would have to use casting to tell compiler that this method exist on our object.
 
         // ## testing runtime types
         Object unknownVehicle = Vehicle.getVehicle("S", "red october", 30);
         if(unknownVehicle.getClass().getSimpleName() == "Submarine"){ // we can check the type
             Submarine submarineVehicle = (Submarine) unknownVehicle; // after this we can assert it...
             submarineVehicle.fireTorpedo("base"); // ...and use its specific methods
+        } else if(unknownVehicle instanceof Car) { // another way of checking the calss is using the instanceof keyword
+            ((Car) unknownVehicle).move("shoping center");
+        } else if (unknownVehicle instanceof Plane bomber) { // here we also use a syntax introduced in java 16 called "pattern matching" where we assing the value to new variable if its a instance of
+            bomber.move("airport");
         }
     }
 
