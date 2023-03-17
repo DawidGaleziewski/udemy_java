@@ -2,11 +2,13 @@ import java.util.Arrays;
 
 public class Main {
     // java provides multiple types of containers to store multiple values, array is one of the more basic ones.
-    // Array is a special type i nava
+    // Array is a special type
     // java allows us to store values of same type only in Array
+    // In essence arrays are very simple objects that inherit only from java.uti.Object's functionality + it has a length property
     public static void main(String[] args) {
         arrayBasics();
         arrayDefaultTypes();
+        enhancedForStatement();
         javaUtilsArrays();
     }
 
@@ -43,6 +45,14 @@ public class Main {
         String[] strArr = new String[5];
         EmptyCustomType[] emptyCustomTypes = new EmptyCustomType[5];
 
+    }
+
+    public static void enhancedForStatement(){
+        // we can use a enhanced for statment in order to print elements of array
+        String[] names = {"Mark", "John", "Peter"};
+        for (String element : names){
+            System.out.println("#single element " + element);
+        };
     }
 
     public static void javaUtilsArrays(){
