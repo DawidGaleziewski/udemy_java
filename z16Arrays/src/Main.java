@@ -10,6 +10,7 @@ public class Main {
         arrayDefaultTypes();
         enhancedForStatement();
         javaUtilsArrays();
+        referenceTypes();
     }
 
     public static void arrayBasics(){
@@ -65,8 +66,39 @@ public class Main {
         String[] copyNames = Arrays.copyOf(names, names.length); // create the copy of array. This is when we do not want to mutate original data.
     }
 
+    public static void referenceTypes(){
+        // each array we create and store to a variable is a referance to this array
+        int[] myIntArr = new int[5]; // my int will referance in memory to this array. We know something will be a reference whenever we see "new" keyword used
+        int[] anotherArr = myIntArr; // this will also referance the same array we created. We have two referances now pointing to the same place in the memory
+        anotherArr[0] = 9999; // this will modify same object in memory
+        System.out.printf("after we modify anotherArr[0] myIntArr changed to %s%n", myIntArr[0]);
 
+        // when we create array of objects, each index will be a referance to that object in memory
+        EmptyCustomType empty = new EmptyCustomType(0); // we create a empty type
+        EmptyCustomType[] arr1 = new EmptyCustomType[5];
+        EmptyCustomType[] arr2 = new EmptyCustomType[5];
+        // pointing all indexes from two arrays to same referance type
+        arr1[0] = empty;
+        arr1[1] = empty;
+
+        arr2[0] = empty;
+        arr2[1] = empty;
+
+        arr1[0].setTestInt(9999); // all referances will change
+
+        System.out.printf("arr1[0]: %s, arr1[1]: %s, arr2[0]: %s, arr2[1]: %s%n", arr1[0].getTestInt(), arr1[1].getTestInt(), arr2[0].getTestInt(), arr2[1].getTestInt());
+
+        // passing arrays to methods
+        int[] newArr = new int[5];
+        mutateArray(newArr); // this will be mutated
+        System.out.printf("mutated arrays index 1 is: %s%n", newArr[1]);
+    }
+
+    public static void mutateArray(int[] array){ // in java we pass object by referance, therefore any mutations will carry out of the method scope
+        array[1] = 66666;
+    }
 }
+
 
 class EmptyCustomType {
     public int test;
@@ -75,4 +107,11 @@ class EmptyCustomType {
         this.test = test;
     }
 
+    public void setTestInt(int test){
+        this.test = test;
+    }
+
+    public int getTestInt(){
+        return this.test;
+    }
 }
