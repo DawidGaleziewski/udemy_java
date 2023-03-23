@@ -19,14 +19,15 @@ public class Main {
                 {10}
         };
 
-        // we can also define a matrix
-        int[][] matrix = new int[50][2];
         for (var outer:  twoDimensionArray){
             System.out.printf("outer: %s%n", outer);
             for(var inner: outer){
                 System.out.printf("inner: %s%n", inner);
             }
         }
+
+        // we can also define a matrix
+        int[][] matrix = new int[50][2];
     }
 
     public static void arrayBasics(){
