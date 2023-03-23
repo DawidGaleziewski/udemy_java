@@ -13,7 +13,7 @@ public class Main {
         referenceTypes();
         variableArguments("Mike", "John", "Greg");
         // multi demensional arrays
-        int [][] array = {
+        int [][] twoDimensionArray = {
                 {1,2},
                 {3,4,5},
                 {10}
@@ -21,6 +21,12 @@ public class Main {
 
         // we can also define a matrix
         int[][] matrix = new int[50][2];
+        for (var outer:  twoDimensionArray){
+            System.out.printf("outer: %s%n", outer);
+            for(var inner: outer){
+                System.out.printf("inner: %s%n", inner);
+            }
+        }
     }
 
     public static void arrayBasics(){
