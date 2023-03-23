@@ -11,6 +11,16 @@ public class Main {
         enhancedForStatement();
         javaUtilsArrays();
         referenceTypes();
+        variableArguments("Mike", "John", "Greg");
+        // multi demensional arrays
+        int [][] array = {
+                {1,2},
+                {3,4,5},
+                {10}
+        };
+
+        // we can also define a matrix
+        int[][] matrix = new int[50][2];
     }
 
     public static void arrayBasics(){
@@ -96,6 +106,13 @@ public class Main {
 
     public static void mutateArray(int[] array){ // in java we pass object by referance, therefore any mutations will carry out of the method scope
         array[1] = 66666;
+    }
+
+
+    public static void variableArguments(String... args){ // just like in js java can accept 0 or more arguments
+        for (int i = 0; i < args.length; i++){
+            System.out.printf("#args index %s, is %s %n", i, args[i]);
+        }
     }
 }
 
