@@ -1,10 +1,14 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class Main {
     public static void main(String[] args) {
         big0();
         LinkedLists();
+        iteratrs();
     };
 
         static void big0(){
@@ -64,5 +68,15 @@ public class Main {
 
             shopQueue.remove(2); // we can remove either by index or value
             shopQueue.remove("Natalie");
+        }
+
+        static void iteratrs(){
+            LinkedList<String> queue = new LinkedList<>();
+            queue.addAll(List.of("John", "Mike", "Marie"));
+            ListIterator<String> iterator = queue.listIterator(); //we can use list iterator method for iterating over LinkedList
+            while (iterator.hasNext()){
+                var person = iterator.next();
+                System.out.printf("# Person in a list is %s%n", person);
+            }
         }
 }
