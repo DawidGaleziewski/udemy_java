@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 record GroceryItem(String name, String type, int count){
@@ -28,7 +30,7 @@ public class Main {
         ArrayList objectList = new ArrayList(); // this will create a array list that will be a array of object (unsafe to use
 
         // most of the times we want to specify the types stored in the ArrayList
-        // we still need <> domain operator to be used, so that java can infer the type in compiletime
+        // we still need <> diamond operator to be used, so that java can infer the type in compiletime
         // array without any type is called a raw arraylist and intellij will throw a warning to inform us on it.
         ArrayList<GroceryItem> groceryList = new ArrayList(); // type arguments do not have to be provided to a generic if it was specified in variable declaration
         groceryList.add(new GroceryItem("Milk"));
@@ -41,5 +43,16 @@ public class Main {
         ArrayList shopList = new ArrayList<>(
                 List.of("Tesco", "Biedronka")
         );
+
+        // we can also add multiple elements to a list
+        shopList.addAll(Arrays.asList( "Baggs", "CCC", "Amazon", "Allegro", "Cosco"));
+
+        // sorting list elements from a-z
+        shopList.sort(Comparator.naturalOrder()); // we need to pass a comperator method to tell the method how to sort
+        shopList.sort(Comparator.reverseOrder());
+
+        // arrayList to array
+        var shoppingArray = shopList.toArray();
     };
+
 }
