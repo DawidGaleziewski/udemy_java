@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         big0();
         LinkedLists();
-        iteratrs();
+        iterators();
     };
 
         static void big0(){
@@ -68,9 +68,8 @@ public class Main {
 
             shopQueue.remove(2); // we can remove either by index or value
             shopQueue.remove("Natalie");
-        }
 
-        static void iteratrs(){
+            // iterating on linked list
             LinkedList<String> queue = new LinkedList<>();
             queue.addAll(List.of("John", "Mike", "Marie"));
             ListIterator<String> iterator = queue.listIterator(); //we can use list iterator method for iterating over LinkedList
@@ -78,5 +77,16 @@ public class Main {
                 var person = iterator.next();
                 System.out.printf("# Person in a list is %s%n", person);
             }
+        }
+
+        static void iterators(){
+            // we can treverse lists either by using for loops or iterators
+            // iterators work in similar fashion database cursors work (fetch prat or larget set of data, iterate thru it going one row at a time)
+            // instance of a iterator will have a next method
+
+            String[] shoppingArray = {"Carrots", "Onions", "Salt", "Pepper"};
+            List<String> shoppingList = List.of(shoppingArray);
+            LinkedList<String> shoppingLinkedList = new LinkedList<>(shoppingList);
+
         }
 }
