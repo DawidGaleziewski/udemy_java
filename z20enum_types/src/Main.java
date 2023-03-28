@@ -9,7 +9,11 @@ public class Main {
         // if we want to get a item by index
         var allDays = Days.values(); // converts into array of values
         System.out.printf("by index: %s%n", allDays[2]);
+
+        // we can use enums in switch statment
     }
+
+
 
     // enam is described similary to class. Convention is to start it with uppercase letter like a class.
     public enum Days {
