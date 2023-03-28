@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Main {
@@ -26,7 +27,23 @@ public class Main {
 
         // same as with autoboxing java supports autounboxing
         int getUnboxedAde2 = age2;
+
+        // boxing and unboxing works also when returned from methods
+        Integer age3 =  getIntPrimitive();
+        int age4 = getIntObject();
+
+        // IMPORTANT, wrapper classes are still calsess, their default values will be nulls and not default primitive values
+        Integer[] wrapperArray = new Integer[5];
+        wrapperArray[0] = 50;
+        System.out.printf("array wrapper %s%n", Arrays.toString(wrapperArray)); // [50, null, null, null]
     }
 
+    static int getIntPrimitive(){
+        return 10;
+    };
+
+    static Integer getIntObject(){
+        return Integer.valueOf(10);
+    };
 
 }
