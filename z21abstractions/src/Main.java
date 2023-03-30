@@ -24,7 +24,11 @@ public class Main {
         //as with normal inheritance we can use child classes where parent class was used
         doAnimalStuff(dog);
         doAnimalStuff(cat);
+
         List<Animal> zoo = List.of(new Dog("dog", "big", 30), new Cat("cat", "big", 30)); // same goes for collections. We can use a child class and use methods that it has in common with the parent
+        for (Animal animal: zoo) {
+            doAnimalStuff(animal);
+        }
     }
 
     public static void doAnimalStuff(Animal animal){
