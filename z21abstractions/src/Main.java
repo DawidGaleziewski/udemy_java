@@ -33,6 +33,9 @@ public class Main {
 
     public static void doAnimalStuff(Animal animal){
         animal.move(300);
+        if(animal instanceof Cat fluffers){ // a way to initialise a variable if animal is of certain instace! Great way of using methods only for certain classes
+            fluffers.lickPaw();
+        }
     }
 }
 
@@ -54,7 +57,11 @@ abstract class Animal { // abstract class modifier
     public abstract void move(int speed); // abstract method has no body, just the class signature. This will force implementation of this method on each concrete class extending this one
 
     protected void makeNoise(){
-        System.out.printf("% is making a noise %s%n", this.type); //this however will work just like normal method when inheriting
+        System.out.printf("%s is making a noise %n", this.type); //this however will work just like normal method when inheriting
+    }
+
+    final void getExplicitType(){ // we cannot override this method on other classes
+        System.out.printf("Type(%s)", this.type);
     }
 }
 
@@ -62,6 +69,7 @@ abstract class Mammal extends Animal { // one abstract class can extend another
     public Mammal(String type, String size, double weight){
         super(type, size, weight); // abstract class will force our subclasses to call a super constructor, despite the fact the abstract class cannot be initialized on its own
     }
+    // notice that abstract class does not have to implement abstract methods from another abstract class.
 }
 
 class Dog extends Animal { // Mammal is abstract class but dog is concrete
@@ -83,5 +91,9 @@ class Cat extends Animal { // Mammal is abstract class but dog is concrete
     @Override
     public void move(int speed){
         System.out.printf("Cat running with speed %s%n", speed);
+    }
+
+    public void lickPaw(){
+        System.out.println("Licking paw...");
     }
 }
