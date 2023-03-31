@@ -2,6 +2,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // in general letters used for Type parameters:
+        // - T for type
+        // - E for element
+        // - K for Key used for map types
+        // - N for number
+        // - V for value
         //using generic class
         // Catapult is a reference type, String is type parameter and string catapult is variable name
         Catapult<Cow> cowCatapult = new Catapult<>(); // we can leave the type parameter empty here, this is called diamond operator and is a shorthand, java will infer the type here to be initialized
