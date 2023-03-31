@@ -15,6 +15,14 @@ public class Main {
         var mike = new FootballPlayer("Mike");
         //cowCatapult.load(mike); //as we specified in generic that this class instance will handle only objects of type Cow we cannot load anything else
         cowCatapult.load(betsy); // but this works as expected
+
+        // Worth mentioning we CANNOT use primitive types in generics
+        // var intTeam = new Team<int>();
+        var integerTeam = new Team<Integer>(); // but wrapper classes are ok
+
+        // we can narrow generic down using 'extends' so that only types that implement certain interfaces/are inheriting from certain calsses can be used
+        // var sportsTeam = new SportsTeam<Integer>(); // wont work
+        var sportsTeam = new SportsTeam<FootballPlayer>(); // FootballPlayer implements Player interface so this is fine
     }
 }
 
@@ -31,7 +39,7 @@ class Catapult<T>{ // T is a type identifier
 class Cow {
 }
 
-
+// If we do not specify upper bound of the generic, its type will be Object
 class Team<T>{ // instead of creating classes like BaseballTeam and FotballTeam we can create more generic class
     List<T> teamMembers;
 
@@ -42,6 +50,10 @@ class Team<T>{ // instead of creating classes like BaseballTeam and FotballTeam 
             teamMembers.add(member);
         }
     }
+}
+
+class SportsTeam<T extends Player>{ // we can narrow down the type so that we can use only types that implement certain interfaces
+
 }
 
 interface Player {
