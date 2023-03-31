@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     // interface is similar to class. But it allows us to describe behaviour only
     // Both interfaces and abstract classes are called "abstracted referance types" and can be used in code as variable types, method parameters and return types
@@ -7,6 +10,11 @@ public class Main {
     // when class agrees to a interface, it will be known also by that type. This helps classes that have little in common to be recognized as a special referance type
 
     public static void main(String[] args) {
+        interfaceBasics();
+        codingToAnInterface();
+    }
+
+    public static void interfaceBasics(){
         // as shown bellow bird can be many types at onec: its type, its master clase, and any interface it implements
         Bird bird = new Bird();
         Animal bird1 = new Bird();
@@ -25,6 +33,25 @@ public class Main {
         stage.showPosition();
     }
 
+    public static void codingToAnInterface(){
+        // Generally coding to interface scalles well to support new subtypes
+        // However when we want to change interface it may wreak havoc (i.e we use it in 50 classes)
+        // Interfaces are not easily extensible, they are not very backwards compatible
+        Bird bird = new Bird();
+
+        ArrayList<Flight> fliers = new ArrayList<>();
+        fliers.add(bird);
+
+        List<Flight> betterFliers = new ArrayList<>();
+        fliers.add(bird);
+
+        // This is why using interface types (list type is an interface type) is better. LinkedLists, ArrayLists and Lists are all implementing this interface. If we do not have a specific need to use methods only available to a type, its better to use a interface type
+        //  triggerFliers(betterFliers);
+        triggerFliers2(betterFliers);
+
+
+    }
+
     // Using interfaces or abstracted referance types is preffered as it allows many various classes to be processed uniformly by the same code
     // "Coding to an interface" allows substitution of a code without forcing a mojor refactor of code
     private static void fly(Flight flier, final int speed){ // final are constants that can't be changed
@@ -35,6 +62,19 @@ public class Main {
         flier.land("Tree");
     }
 
+
+    private static void triggerFliers(ArrayList<Flight> fliers){
+        for(var flier: fliers){
+            flier.liftOff();
+        }
+    }
+
+    private static void triggerFliers2(List<Flight> fliers){
+        for(var flier: fliers){
+            flier.liftOff();
+        }
+    }
+
 }
 
 interface Flight {
@@ -42,6 +82,15 @@ interface Flight {
     double MILES_TO_KM = 1.60934; // any fields on interface are not instance fields. They are are implicitly public, static, final (constant values)
     void liftOff();
     abstract void land(String place);
+
+    // In order to allow transitioning, interfaces in JDK8 introduced "extension method". It is a concreate method (not abstract)
+    // It is similar to a method on a superclass, as we can override it
+    // Adding a extension method wont break any classes using it
+    default void transition(){
+        // this can be overriden in classes using this interface
+        // notice we can use this as this will be usable on a instance
+        System.out.println("transition not implemented on " + this.getClass().getName()); // common practise is to eaither print where this method is not implemented or  throw a error
+    }
 }
 
 interface Trackable {
