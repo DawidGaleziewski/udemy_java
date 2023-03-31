@@ -31,6 +31,8 @@ public class Main {
         // enums can implement interfaces as well!
         FlightStages stage = FlightStages.LAUNCH;
         stage.showPosition();
+
+        Flight.log("test"); // just like with classes, we can use static methods (since jdk 8)
     }
 
     public static void codingToAnInterface(){
@@ -90,6 +92,10 @@ interface Flight {
         // this can be overriden in classes using this interface
         // notice we can use this as this will be usable on a instance
         System.out.println("transition not implemented on " + this.getClass().getName()); // common practise is to eaither print where this method is not implemented or  throw a error
+    }
+
+    static void log(String info){
+        System.out.println(info);
     }
 }
 
