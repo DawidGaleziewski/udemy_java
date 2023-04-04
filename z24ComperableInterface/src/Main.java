@@ -7,7 +7,7 @@ public class Main {
 }
 
 
-// Comperable interface
+// Comparable interface
 interface CopyOfComparable<T> {
     int compareTo(T o); // any class that implements this interface needs to implement the compareTo method
 }
